@@ -22,7 +22,8 @@
     "padded-blocks": ["error", "never"],
     "array-bracket-spacing": ["error", "always"],
     "no-trailing-spaces": ["error"],
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0 }],
-    "import/no-extraneous-dependencies": "off"
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0, "maxEOF": 0 }],
+    "import/no-extraneous-dependencies": "off",
+    "import/no-anonymous-default-export": "off"
   }
 }
