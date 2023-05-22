@@ -19,6 +19,7 @@
   "rules": {
     "@typescript-eslint/quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "eol-last": ["error", "always"],
+    "max-len": ["warn", { "code": 80 }],
     "padded-blocks": ["error", "never"],
     "array-bracket-spacing": ["error", "always"],
     "no-trailing-spaces": ["error"],
