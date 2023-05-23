@@ -1,0 +1,62 @@
+{
+  "root": true,
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "storybook",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 80
+      }
+    ],
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
+    "no-trailing-spaces": [
+      "error"
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxBOF": 0,
+        "maxEOF": 0
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "import/no-anonymous-default-export": "off"
+  }
+}
