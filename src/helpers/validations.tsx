@@ -1,8 +1,7 @@
-import { Dispatch } from 'react';
-import { ActionType } from '~/@types/form';
+import { ReducerType } from '~/@types/form';
 
 export function validateLength(
-  dispatch: Dispatch<ActionType>,
+  dispatch: ReducerType,
   actionType: string,
   value: string,
   min: number,
