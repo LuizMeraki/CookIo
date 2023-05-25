@@ -34,3 +34,11 @@
 .error {
   outline: 0.1rem solid var(--red-100);
 }
+
+.message {
+  color: var(--red-100);
+  text-transform: lowercase;
+
+  display: block;
+  margin-top: .6rem;
+}
