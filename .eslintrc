@@ -30,6 +30,7 @@
         "code": 90
       }
     ],
+    "semi": ["error", "always"],
     "padded-blocks": ["error", "never"],
     "object-curly-spacing": ["error", "always"],
     "no-trailing-spaces": ["error"],
