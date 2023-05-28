@@ -1,10 +1,6 @@
 {
   "root": true,
-  "extends": [
-    "next/core-web-vitals",
-    "airbnb-typescript",
-    "prettier"
-  ],
+  "extends": ["next/core-web-vitals", "airbnb-typescript", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -27,27 +23,21 @@
         "allowTemplateLiterals": true
       }
     ],
-    "eol-last": [
-      "error",
-      "always"
-    ],
+    "eol-last": ["error", "always"],
     "max-len": [
       "warn",
       {
         "code": 90
       }
     ],
-    "padded-blocks": [
+    "padded-blocks": ["error", "never"],
+    "array-bracket-spacing": ["error", "always"],
+    "object-curly-spacing": [
       "error",
-      "never"
+      "always",
+      { "objectsInObjects": false, "arraysInObjects": false }
     ],
-    "array-bracket-spacing": [
-      "error",
-      "always"
-    ],
-    "no-trailing-spaces": [
-      "error"
-    ],
+    "no-trailing-spaces": ["error"],
     "no-multiple-empty-lines": [
       "error",
       {
