@@ -1,35 +1,27 @@
 'use client';
 
-import {
-  Dispatch,
-  ChangeEvent,
-  InputHTMLAttributes,
-} from 'react';
+import { InputHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  error: string | null;
+  error?: string | null;
   state: string;
-  propKey: string;
-  actionType: string;
-  dispatch: Dispatch<any>;
+  onChangeCallback: () => void;
 }
 
 export default function Input({
   label,
   error,
   state,
-  propKey,
-  actionType,
-  dispatch,
+  onChangeCallback,
   ...rest
 }: InputProps) {
   const classNames = error ? styles.error : styles.input;
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    dispatch({ actionType, propKey: 'value', payload: e.target.value })
+  function handleChange() {
+    onChangeCallback();
   }
 
   return (
