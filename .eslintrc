@@ -31,11 +31,7 @@
       }
     ],
     "padded-blocks": ["error", "never"],
-    "object-curly-spacing": [
-      "error",
-      "always",
-      { "objectsInObjects": false, "arraysInObjects": false }
-    ],
+    "object-curly-spacing": ["error", "always"],
     "no-trailing-spaces": ["error"],
     "no-multiple-empty-lines": [
       "error",
