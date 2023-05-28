@@ -1,103 +1,126 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { useReducer } from 'react';
-import { ActionType } from '~/@types/form';
-import { validatePassword, validateName, validateEmail } from '~/helpers/validations';
+
+import { ReducerActionType } from '~/@types/form';
+
+import {
+  validateLength,
+  validateEmail,
+  validateName,
+  validatePassword,
+} from '~/helpers/validations';
+
 import Input from '.';
 
+type StoryType = StoryObj<typeof Input>;
+
+type InitialValueType = {
+  recipeName: { value: string; error: string | null };
+  username: { value: string; error: string | null };
+  email: { value: string; error: string | null };
+  password: { value: string; error: string | null };
+};
+
 export default {
-  title: 'Form/Input',
+  title: 'Components/Input',
   component: Input,
+  args: { type: 'text' },
 } as Meta<typeof Input>;
 
-type StoryType = StoryObj<typeof Input>
-
-const initialValue = {
+const initialValue: InitialValueType = {
+  recipeName: { value: '', error: null },
   username: { value: '', error: null },
   email: { value: '', error: null },
   password: { value: '', error: null },
 };
 
-function reducer(state: typeof initialValue, action: ActionType) {
-  switch (action.actionType) {
-    case 'username':
-      return {
-        ...state,
-        username: { ...state.username, [action.propKey]: action.payload },
-      };
-    case 'email':
-      return { ...state, email: { ...state.email, [action.propKey]: action.payload } };
-    case 'password':
-      return {
-        ...state,
-        password: { ...state.password, [action.propKey]: action.payload },
-      };
+function reducer(state: InitialValueType, action: ReducerActionType) {
+  const value = action.payload.value;
+  const error = action.payload.error;
+
+  switch (action.type) {
+    case 'RECIPE_NAME':
+      return { ...state, recipeName: { value, error } };
+    case 'USERNAME':
+      return { ...state, username: { value, error } };
+    case 'EMAIL':
+      return { ...state, email: { value, error } };
+    case 'PASSWORD':
+      return { ...state, password: { value, error } };
     default:
       return state;
   }
 }
 
-function UsernameTemplate(args: any) {
-  const [ state, dispatch ] = useReducer(reducer, initialValue);
-
-  return (
-    <Input
-      {...args}
-      label='Nome'
-      type='text'
-      placeholder='seu nome'
-      actionType='username'
-      state={state.username.value}
-      dispatch={dispatch}
-      error={state.username.error}
-      onKeyUp={() => validateName(dispatch, 'username', state.username.value, 2, 50)}
-    />
-  );
+function SharedReducer() {
+  return useReducer(reducer, initialValue);
 }
 
-function EmailTemplate(args: any) {
-  const [ state, dispatch ] = useReducer(reducer, initialValue);
+export const RecipeName: StoryType = {
+  render: (args) => {
+    const [state, dispatch] = SharedReducer();
 
-  return (
-    <Input
-      {...args}
-      label='E-mail'
-      type='text'
-      placeholder='exemplo@gmail.com'
-      actionType='email'
-      state={state.email.value}
-      dispatch={dispatch}
-      error={state.email.error}
-      onKeyUp={() => validateEmail(dispatch, 'email', state.email.value)}
-    />
-  );
-}
-
-function PasswordTemplate(args: any) {
-  const [ state, dispatch ] = useReducer(reducer, initialValue);
-
-  return (
-    <Input
-      {...args}
-      label='Senha'
-      type='password'
-      placeholder='########'
-      actionType='password'
-      state={state.password.value}
-      dispatch={dispatch}
-      error={state.password.error}
-      onKeyUp={() => validatePassword(dispatch, 'password', state.password.value, 8, 50)}
-    />
-  );
-}
+    return (
+      <Input
+        {...args}
+        label="Nome da Receita"
+        placeholder="dê um nome para receita"
+        state={state.recipeName.value}
+        error={state.recipeName.error}
+        onChange={(e) => validateLength(e, dispatch, 'RECIPE_NAME', 2, 50)}
+      />
+    );
+  },
+};
 
 export const Username: StoryType = {
-  render: (args) => <UsernameTemplate {...args} />,
+  render: (args) => {
+    const [state, dispatch] = SharedReducer();
+
+    return (
+      <Input
+        {...args}
+        label="Nome"
+        placeholder="seu nome"
+        state={state.username.value}
+        error={state.username.error}
+        onChange={(e) => validateName(e, dispatch, 'USERNAME', 2, 50)}
+      />
+    );
+  },
 };
 
 export const Email: StoryType = {
-  render: (args) => <EmailTemplate {...args} />,
+  render: (args) => {
+    const [state, dispatch] = SharedReducer();
+
+    return (
+      <Input
+        {...args}
+        label="E-mail"
+        placeholder="exemplo@gmail.com"
+        state={state.email.value}
+        error={state.email.error}
+        onChange={(e) => validateEmail(e, dispatch, 'EMAIL')}
+      />
+    );
+  },
 };
 
 export const Password: StoryType = {
-  render: (args) => <PasswordTemplate {...args} />,
+  render: (args) => {
+    const [state, dispatch] = SharedReducer();
+
+    return (
+      <Input
+        {...args}
+        label="Senha"
+        placeholder="digite sua senha"
+        state={state.password.value}
+        error={state.password.error}
+        onChange={(e) => validatePassword(e, dispatch, 'USERNAME', 2, 10)}
+      />
+    );
+  },
 };
