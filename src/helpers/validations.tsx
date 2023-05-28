@@ -4,8 +4,8 @@ import { DispatchType, ActionType } from '~/@types/form';
 function verifyLength(value: string, min: number, max: number) {
   const length = value.trim().length;
 
-  if (length < min) return `informe no mínimo ${min} caracteres`
-  if (length > max) return `informe no máximo ${max} caracteres`
+  if (length < min) return `informe no mínimo ${min} caracteres`;
+  if (length > max) return `informe no máximo ${max} caracteres`;
 
   return null;
 }
@@ -34,7 +34,7 @@ export function validateName(
   max: number
 ) {
   const value = e.target.value;
-  const validationValue = verifyLength(value, min, max)
+  const validationValue = verifyLength(value, min, max);
   const hasNonAlphabeticCharacters = /[^A-Za-z\s]/.test(value);
 
   if (hasNonAlphabeticCharacters) {
@@ -43,7 +43,7 @@ export function validateName(
       payload: { value, error: 'informe apenas caracteres alfabéticos' },
     });
   } else {
-    dispatch({ type, payload: { value, error: validationValue }});
+    dispatch({ type, payload: { value, error: validationValue } });
   }
 }
 
@@ -76,7 +76,7 @@ export function validatePassword(
   const value = e.target.value;
   const isPasswordValid = /^[a-zA-Z0-9._!@#$%&]+$/g.test(value);
   const validationValue = verifyLength(value, min, max);
-  
+
   if (!isPasswordValid) {
     dispatch({
       type,
