@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "cypress open",
+    "test": "cypress open --component --browser electron",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
