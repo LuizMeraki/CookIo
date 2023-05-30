@@ -1,4 +1,4 @@
-import { InitialValueType, ReducerActionType } from '~/@types/form';
+import { InitialValueType, ReducerActionType } from '~/@types/Form';
 
 export function reducerMock(state: InitialValueType, action: ReducerActionType) {
   const value = action.payload.value;

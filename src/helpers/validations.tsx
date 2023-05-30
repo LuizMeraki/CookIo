@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { DispatchType, ActionType } from '~/@types/form';
+import { DispatchType, ActionType } from '~/@types/Form';
 
 function verifyLength(value: string, min: number, max: number) {
   const length = value.trim().length;
