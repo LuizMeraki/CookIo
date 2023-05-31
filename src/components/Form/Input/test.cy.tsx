@@ -18,7 +18,7 @@ describe('Input - Length test', () => {
       <InputMock
         label="Nome da Receita"
         type="text"
-        placeholder="nomeie sua deliciosa receita"
+        placeholder="nomeie sua receita"
         stateType="recipeName"
         actionType="RECIPE_NAME"
         handleChange={handleLength}
