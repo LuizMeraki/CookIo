@@ -19,7 +19,16 @@ export default {
   args: {
     label: 'Nome da Receita',
     type: 'text',
-    placeholder: 'nomeie sua deliciosa receita',
+    placeholder: 'nomeie sua receita',
+  },
+  argTypes: {
+    error: { control: false },
+    state: { control: false },
+    stateType: { table: { disable: true } },
+    actionType: { table: { disable: true } },
+    handleChange: { table: { disable: true } },
+    min: { table: { disable: true } },
+    max: { table: { disable: true } },
   },
 } as Meta<typeof Input>;
 
