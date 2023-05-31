@@ -7,11 +7,11 @@ import { reducerMock, initialValueMock } from './mock';
 import Input from '.';
 
 import {
-  validateLength,
-  validateEmail,
-  validateName,
-  validatePassword,
-} from '~/helpers/validations';
+  handleLength,
+  handleEmail,
+  handleName,
+  handlePassword,
+} from '~/helpers/handleChange';
 
 type StoryType = StoryObj<typeof Input>;
 
@@ -36,7 +36,7 @@ export const RecipeName: StoryType = {
         placeholder="dê um nome para receita"
         state={state.recipeName!.value}
         error={state.recipeName!.error}
-        onChange={(e) => validateLength(e, dispatch, 'RECIPE_NAME', 2, 50)}
+        onChange={(e) => handleLength(e, dispatch, 'RECIPE_NAME', 2, 50)}
       />
     );
   },
@@ -53,7 +53,7 @@ export const Username: StoryType = {
         placeholder="seu nome"
         state={state.username!.value}
         error={state.username!.error}
-        onChange={(e) => validateName(e, dispatch, 'USERNAME', 2, 50)}
+        onChange={(e) => handleName(e, dispatch, 'USERNAME', 2, 50)}
       />
     );
   },
@@ -70,7 +70,7 @@ export const Email: StoryType = {
         placeholder="exemplo@gmail.com"
         state={state.email!.value}
         error={state.email!.error}
-        onChange={(e) => validateEmail(e, dispatch, 'EMAIL')}
+        onChange={(e) => handleEmail(e, dispatch, 'EMAIL')}
       />
     );
   },
@@ -87,7 +87,7 @@ export const Password: StoryType = {
         placeholder="digite sua senha"
         state={state.password!.value}
         error={state.password!.error}
-        onChange={(e) => validatePassword(e, dispatch, 'USERNAME', 2, 10)}
+        onChange={(e) => handlePassword(e, dispatch, 'USERNAME', 2, 10)}
       />
     );
   },
