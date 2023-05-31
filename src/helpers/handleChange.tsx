@@ -10,7 +10,7 @@ function verifyLength(value: string, min: number, max: number) {
   return null;
 }
 
-export function validateLength(
+export function handleLength(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
   type: ActionType,
@@ -26,7 +26,7 @@ export function validateLength(
   });
 }
 
-export function validateName(
+export function handleName(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
   type: ActionType,
@@ -47,7 +47,7 @@ export function validateName(
   }
 }
 
-export function validateEmail(
+export function handleEmail(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
   type: ActionType
@@ -66,7 +66,7 @@ export function validateEmail(
   }
 }
 
-export function validatePassword(
+export function handlePassword(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
   type: ActionType,
