@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { useReducer } from 'react';
-
-import { reducerMock, initialValueMock } from './mock';
+import { InputMock } from './mock';
 
 import Input from '.';
 
@@ -18,77 +16,63 @@ type StoryType = StoryObj<typeof Input>;
 export default {
   title: 'Components/Input',
   component: Input,
-  args: { type: 'text' },
+  args: {
+    label: 'Nome da Receita',
+    type: 'text',
+    placeholder: 'nomeie sua deliciosa receita',
+  },
 } as Meta<typeof Input>;
 
-function SharedReducer() {
-  return useReducer(reducerMock, initialValueMock);
-}
-
-export const RecipeName: StoryType = {
-  render: (args) => {
-    const [state, dispatch] = SharedReducer();
-
-    return (
-      <Input
-        {...args}
-        label="Nome da Receita"
-        placeholder="dê um nome para receita"
-        state={state.recipeName!.value}
-        error={state.recipeName!.error}
-        onChange={(e) => handleLength(e, dispatch, 'RECIPE_NAME', 2, 50)}
-      />
-    );
+const Template: StoryType = {
+  render: (args: any) => {
+    return <InputMock {...args} />;
   },
 };
 
-export const Username: StoryType = {
-  render: (args) => {
-    const [state, dispatch] = SharedReducer();
-
-    return (
-      <Input
-        {...args}
-        label="Nome"
-        placeholder="seu nome"
-        state={state.username!.value}
-        error={state.username!.error}
-        onChange={(e) => handleName(e, dispatch, 'USERNAME', 2, 50)}
-      />
-    );
+export const RecipeName = {
+  ...Template,
+  args: {
+    stateType: 'recipeName',
+    actionType: 'RECIPE_NAME',
+    handleChange: handleLength,
+    min: 2,
+    max: 100,
   },
 };
 
-export const Email: StoryType = {
-  render: (args) => {
-    const [state, dispatch] = SharedReducer();
-
-    return (
-      <Input
-        {...args}
-        label="E-mail"
-        placeholder="exemplo@gmail.com"
-        state={state.email!.value}
-        error={state.email!.error}
-        onChange={(e) => handleEmail(e, dispatch, 'EMAIL')}
-      />
-    );
+export const Username = {
+  ...Template,
+  args: {
+    label: 'Nome',
+    placeholder: 'seu nome',
+    stateType: 'username',
+    actionType: 'USERNAME',
+    handleChange: handleName,
+    min: 2,
+    max: 50,
   },
 };
 
-export const Password: StoryType = {
-  render: (args) => {
-    const [state, dispatch] = SharedReducer();
+export const Email = {
+  ...Template,
+  args: {
+    label: 'E-mail',
+    placeholder: 'exemplo@gmail.com',
+    stateType: 'email',
+    actionType: 'EMAIL',
+    handleChange: handleEmail,
+  },
+};
 
-    return (
-      <Input
-        {...args}
-        label="Senha"
-        placeholder="digite sua senha"
-        state={state.password!.value}
-        error={state.password!.error}
-        onChange={(e) => handlePassword(e, dispatch, 'USERNAME', 2, 10)}
-      />
-    );
+export const Password = {
+  ...Template,
+  args: {
+    label: 'Senha',
+    placeholder: '########',
+    stateType: 'password',
+    actionType: 'PASSWORD',
+    handleChange: handlePassword,
+    min: 8,
+    max: 50,
   },
 };
