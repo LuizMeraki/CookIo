@@ -53,7 +53,7 @@ export function handleEmail(
   property: PropertyType
 ) {
   const value = e.target.value;
-  const regularExpression = /^[a-z0-9._-]+@(gmail|hotmail|outlook|yahoo)\.com$/;
+  const regularExpression = /^[a-z0-9._-]+@(gmail|hotmail|outlook|yahoo).(com|com.br)$/;
   const isEmailValid = regularExpression.test(value);
 
   if (!isEmailValid) {
