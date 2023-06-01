@@ -10,12 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   state: string;
 }
 
-export default function Input({
-  label,
-  error,
-  state,
-  ...rest
-}: InputProps) {
+export default function Input({ label, error, state, ...rest }: InputProps) {
   const classNames = error ? styles.error : styles.input;
 
   return (
@@ -24,12 +19,7 @@ export default function Input({
         {label}
       </label>
 
-      <input
-        className={classNames}
-        id={label}
-        value={state}
-        {...rest}
-      />
+      <input className={classNames} id={label} value={state} {...rest} />
 
       {error && <span className={styles.message}>{error}</span>}
     </>

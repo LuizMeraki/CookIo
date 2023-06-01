@@ -13,7 +13,7 @@ type InputMockType = {
   min: number;
   max: number;
   handleChange: (...params: any) => void;
-}
+};
 
 export const initialValueMock: InitialValueType = {
   recipeName: { value: '', error: null },
