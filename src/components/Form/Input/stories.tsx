@@ -24,11 +24,10 @@ export default {
   argTypes: {
     error: { control: false },
     state: { control: false },
-    stateType: { table: { disable: true } },
-    actionType: { table: { disable: true } },
-    handleChange: { table: { disable: true } },
     min: { table: { disable: true } },
     max: { table: { disable: true } },
+    property: { table: { disable: true } },
+    handleChange: { table: { disable: true } },
   },
 } as Meta<typeof Input>;
 
@@ -41,8 +40,7 @@ const Template: StoryType = {
 export const RecipeName = {
   ...Template,
   args: {
-    stateType: 'recipeName',
-    actionType: 'RECIPE_NAME',
+    property: 'recipeName',
     handleChange: handleLength,
     min: 2,
     max: 100,
@@ -54,8 +52,7 @@ export const Username = {
   args: {
     label: 'Nome',
     placeholder: 'seu nome',
-    stateType: 'username',
-    actionType: 'USERNAME',
+    property: 'username',
     handleChange: handleName,
     min: 2,
     max: 50,
@@ -68,8 +65,7 @@ export const Email = {
     label: 'E-mail',
     type: 'email',
     placeholder: 'exemplo@gmail.com',
-    stateType: 'email',
-    actionType: 'EMAIL',
+    property: 'email',
     handleChange: handleEmail,
   },
 };
@@ -80,8 +76,7 @@ export const Password = {
     label: 'Senha',
     type: 'password',
     placeholder: '########',
-    stateType: 'password',
-    actionType: 'PASSWORD',
+    property: 'password',
     handleChange: handlePassword,
     min: 8,
     max: 50,

@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { DispatchType, ActionType } from '~/@types/Form';
+import { DispatchType, PropertyType } from '~/@types/Form';
 
 function verifyLength(value: string, min: number, max: number) {
   const length = value.trim().length;
@@ -13,7 +13,7 @@ function verifyLength(value: string, min: number, max: number) {
 export function handleLength(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
-  type: ActionType,
+  property: PropertyType,
   min: number,
   max: number
 ) {
@@ -21,7 +21,7 @@ export function handleLength(
   const validationValue = verifyLength(value, min, max);
 
   dispatch({
-    type,
+    property,
     payload: { value, error: validationValue },
   });
 }
@@ -29,7 +29,7 @@ export function handleLength(
 export function handleName(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
-  type: ActionType,
+  property: PropertyType,
   min: number,
   max: number
 ) {
@@ -39,18 +39,18 @@ export function handleName(
 
   if (hasNonAlphabeticCharacters) {
     dispatch({
-      type,
+      property,
       payload: { value, error: 'informe apenas caracteres alfabéticos' },
     });
   } else {
-    dispatch({ type, payload: { value, error: validationValue } });
+    dispatch({ property, payload: { value, error: validationValue } });
   }
 }
 
 export function handleEmail(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
-  type: ActionType
+  property: PropertyType
 ) {
   const value = e.target.value;
   const regularExpression = /^[a-z0-9._-]+@(gmail|hotmail|outlook|yahoo)\.com$/;
@@ -58,18 +58,18 @@ export function handleEmail(
 
   if (!isEmailValid) {
     dispatch({
-      type,
+      property,
       payload: { value, error: 'informe um e-mail válido' },
     });
   } else {
-    dispatch({ type, payload: { value, error: null } });
+    dispatch({ property, payload: { value, error: null } });
   }
 }
 
 export function handlePassword(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
-  type: ActionType,
+  property: PropertyType,
   min: number,
   max: number
 ) {
@@ -79,10 +79,10 @@ export function handlePassword(
 
   if (!isPasswordValid) {
     dispatch({
-      type,
+      property,
       payload: { value, error: 'informe apenas caracteres de a-z, 0-9 ou ._!@#$%&' },
     });
   } else {
-    dispatch({ type, payload: { value, error: validationValue } });
+    dispatch({ property, payload: { value, error: validationValue } });
   }
 }
