@@ -84,6 +84,17 @@ describe('Input - E-mail test', () => {
 
   it('Should be valid email', () => {
     cy.get('input').type('jhondoe@gmail.com').should('not.have.class', errorClassName);
+    cy.get('input').clear();
+
+    cy.get('input').type('jhondoe@yahoo.com.br').should('not.have.class', errorClassName);
+    cy.get('input').clear();
+
+    cy.get('input').type('jhondoe@hotmail.com').should('not.have.class', errorClassName);
+    cy.get('input').clear();
+
+    cy.get('input')
+      .type('jhondoe@outlook.com.br')
+      .should('not.have.class', errorClassName);
   });
 });
 
