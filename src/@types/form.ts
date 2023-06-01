@@ -1,9 +1,9 @@
 import { Dispatch } from 'react';
 
-export type ActionType = 'RECIPE_NAME' | 'USERNAME' | 'EMAIL' | 'PASSWORD';
+export type PropertyType = 'recipeName' | 'username' | 'email' | 'password';
 
 export type ReducerActionType = {
-  type: ActionType;
+  property: PropertyType;
   payload: { value: string; error: string | null };
 };
 
