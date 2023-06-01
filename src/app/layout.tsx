@@ -8,15 +8,11 @@ export const metadata = {
 };
 
 const baloo2 = Baloo_2({
-  weight: [ '400', '500', '600', '700', '800' ],
-  subsets: [ 'latin' ],
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-br">
       <body className={baloo2.className}>{children}</body>

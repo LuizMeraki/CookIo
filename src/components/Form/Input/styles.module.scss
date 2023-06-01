@@ -1,0 +1,51 @@
+.label {
+  color: var(--orange-200);
+
+  font-size: 2rem;
+  font-weight: 600;
+
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.input,
+.error {
+  width: 100%;
+  font-size: 1.8rem;
+
+  color: var(--black-100);
+  background-color: var(--gray-100);
+
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--gray-300);
+  }
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--gray-100) inset !important;
+}
+
+.input:focus {
+  outline: 0.1rem solid var(--orange-200);
+}
+
+.error {
+  outline: 0.1rem solid var(--red-100);
+}
+
+.message {
+  color: var(--red-100);
+  text-transform: lowercase;
+
+  display: block;
+  margin-top: 0.6rem;
+}
