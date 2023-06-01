@@ -66,6 +66,7 @@ export const Email = {
   ...Template,
   args: {
     label: 'E-mail',
+    type: 'email',
     placeholder: 'exemplo@gmail.com',
     stateType: 'email',
     actionType: 'EMAIL',
@@ -77,6 +78,7 @@ export const Password = {
   ...Template,
   args: {
     label: 'Senha',
+    type: 'password',
     placeholder: '########',
     stateType: 'password',
     actionType: 'PASSWORD',
