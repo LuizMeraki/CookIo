@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  line-height: 2.2rem;
 }
 
 html {
@@ -12,7 +14,6 @@ html {
 
 body {
   font-size: 1.6rem;
-  line-height: 2.2rem;
   background-color: var(--white-200);
 }
 
