@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import RedirectLink from '.';
 
 type RedirectLinkType = typeof RedirectLink;
-type StoryType = StoryObj<RedirectLinkType>;
 
 export default {
   title: 'Components/RedirectLink',
@@ -28,6 +27,6 @@ export default {
   },
 } as Meta<RedirectLinkType>;
 
-export const Default: StoryType = {
+export const Default: StoryObj<RedirectLinkType> = {
   render: (args) => <RedirectLink {...args} />,
 };
