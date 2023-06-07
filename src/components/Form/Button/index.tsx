@@ -1,3 +1,5 @@
+'use client';
+
 import { lazy, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 
 const Link = lazy(() => import('next/link'));
