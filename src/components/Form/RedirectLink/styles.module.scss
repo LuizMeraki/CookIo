@@ -1,0 +1,12 @@
+.link {
+  color: var(--orange-200);
+
+  font-size: 1.8rem;
+  text-decoration: underline;
+
+  transition: 400ms;
+
+  &:hover {
+    color: var(--brown-100);
+  }
+}
