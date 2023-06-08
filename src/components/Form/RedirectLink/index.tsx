@@ -6,11 +6,21 @@ import { AnchorHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';
 
-type RedirectLinkProps = {
-  children: React.ReactNode;
-} & LinkProps &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
+type LinkAttributes = LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function RedirectLink(props: RedirectLinkProps) {
-  return <Link className={styles.link} {...props} />;
+interface RedirectLinkProps extends LinkAttributes {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary';
+}
+
+export default function RedirectLink({
+  children,
+  variant = 'primary',
+  ...rest
+}: RedirectLinkProps) {
+  return (
+    <Link className={styles[variant]} {...rest}>
+      {children}
+    </Link>
+  );
 }
