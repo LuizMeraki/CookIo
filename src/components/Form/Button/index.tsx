@@ -1,37 +1,17 @@
 'use client';
 
-import { lazy, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
-
-const Link = lazy(() => import('next/link'));
+import { ButtonHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';
 
-type ElementsType = ButtonHTMLAttributes<HTMLButtonElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
-
-interface ButtonProps extends ElementsType {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  hasAnchor?: boolean;
-  anchor?: string;
 }
 
-export default function Button({
-  children,
-  hasAnchor = false,
-  anchor = '',
-  ...rest
-}: ButtonProps) {
+export default function Button({ children, ...rest }: ButtonProps) {
   return (
-    <>
-      {hasAnchor ? (
-        <Link className={styles.element} href={anchor}>
-          {children}
-        </Link>
-      ) : (
-        <button className={styles.element} {...rest}>
-          {children}
-        </button>
-      )}
-    </>
+    <button className={styles.button} {...rest}>
+      {children}
+    </button>
   );
 }
