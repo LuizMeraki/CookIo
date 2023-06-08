@@ -1,4 +1,4 @@
-.link {
+.primary {
   color: var(--orange-200);
 
   font-size: 1.8rem;
@@ -8,5 +8,24 @@
 
   &:hover {
     color: var(--brown-100);
+  }
+}
+
+.secondary {
+  width: 100%;
+
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+
+  color: var(--white-200);
+  background-color: var(--orange-200);
+
+  display: block;
+  padding: 1.7rem 6rem;
+  border-radius: 1.8rem;
+
+  &:active {
+    background-color: var(--orange-300);
   }
 }
