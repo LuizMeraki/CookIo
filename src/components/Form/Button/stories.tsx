@@ -18,11 +18,6 @@ const Template: StoryType = {
   render: (args) => <Button {...args} />,
 };
 
-export const Anchor: StoryType = {
-  ...Template,
-  args: { hasAnchor: true, anchor: 'https://github.com/LuizMeraki' },
-};
-
 export const Default: StoryType = { ...Template };
 
 export const ButtonDisabled: StoryType = {
