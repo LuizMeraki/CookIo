@@ -17,13 +17,10 @@
   transform: translate(-50%, -50%);
 
   &::backdrop {
+    animation: backdrop-fade-blur 500ms linear;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
   }
-}
-
-.modal::backdrop {
-  animation: backdrop-fade-blur 500ms linear;
-  backdrop-filter: blur(5px);
 }
 
 .closeIcon {
