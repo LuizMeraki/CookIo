@@ -1,5 +1,5 @@
-export function handleModalRender() {
-  const modal = document.getElementById('modal') as HTMLDialogElement | null;
+export function handleModalRender(id: string) {
+  const modal = document.getElementById(id) as HTMLDialogElement | null;
 
   if (!modal) return;
 
