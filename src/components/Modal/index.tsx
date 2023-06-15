@@ -39,7 +39,7 @@ export default function Modal({ children }: ModalProps) {
             <CloseIcon />
           </button>
 
-          <div className={styles.content}>{children}</div>
+          {children}
         </dialog>,
         root.current!
       )
