@@ -10,10 +10,11 @@ import { CloseIcon } from '~/components/SVG/CloseIcon';
 import styles from './styles.module.scss';
 
 interface ModalProps {
+  id: string;
   children: React.ReactNode;
 }
 
-export default function Modal({ children }: ModalProps) {
+export default function Modal({ id, children }: ModalProps) {
   const root = useRef<HTMLElement | null>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -26,13 +27,13 @@ export default function Modal({ children }: ModalProps) {
     ? createPortal(
         <dialog
           className={styles.modal}
-          id="modal"
+          id={id}
           aria-label="modal para exibição de informações"
         >
           <button
             className={styles.closeIcon}
             type="button"
-            onClick={handleModalRender}
+            onClick={() => handleModalRender(id)}
             title="fechar modal"
             aria-label="botão para fechar modal"
           >
