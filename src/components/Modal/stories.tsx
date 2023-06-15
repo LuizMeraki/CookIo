@@ -13,12 +13,14 @@ export default {
   component: Modal,
 } as Meta<ModalType>;
 
+const modalId = 'modal-storybook';
+
 export const Default: StoryObj<ModalType> = {
   render: () => (
     <>
-      <button onClick={handleModalRender}>OPEN MODAL</button>
+      <button onClick={() => handleModalRender(modalId)}>OPEN MODAL</button>
 
-      <Modal>
+      <Modal id={modalId}>
         <RequestErrorTemplate />
       </Modal>
     </>
