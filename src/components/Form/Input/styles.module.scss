@@ -8,12 +8,18 @@
   display: block;
 }
 
+.label,
+.input,
+.error,
+.message {
+  line-height: 2.2rem;
+}
+
 .input,
 .error {
   width: 100%;
   font-size: 1.8rem;
 
-  color: var(--black-100);
   background-color: var(--gray-100);
 
   padding: 0.8rem 2rem;
