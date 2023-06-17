@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import PageLoading from '.';
+import PageLoading from '~/components/PageLoading';
 
 type PageLoadingType = typeof PageLoading;
 
