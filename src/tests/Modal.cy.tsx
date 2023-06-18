@@ -1,5 +1,5 @@
-import Modal from '.';
-import { RequestErrorTemplate } from './templates/RequestError';
+import Modal from '~/components/Modal';
+import { RequestErrorTemplate } from '~/components/Modal/templates/RequestError';
 import { handleModalRender } from '~/helpers/handleModal';
 
 describe('Modal', () => {
