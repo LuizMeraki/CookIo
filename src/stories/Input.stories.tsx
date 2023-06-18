@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputMock } from '~/components/Form/Input/mock';
+import { InputMock } from '~/mocks/InputMock';
 
 import Input from '~/components/Form/Input';
 

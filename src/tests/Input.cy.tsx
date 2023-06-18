@@ -5,7 +5,7 @@ import {
   handlePassword,
 } from '~/helpers/handleChange';
 
-import { InputMock } from '~/components/Form/Input/mock';
+import { InputMock } from '~/mocks/InputMock';
 
 const errorClassName = 'styles_error_7YWZd';
 
