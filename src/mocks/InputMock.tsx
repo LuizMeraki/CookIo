@@ -4,7 +4,7 @@ import { PropertyType } from '~/@types/Form';
 
 import { reducer } from '~/helpers/reducer';
 
-import Input from '.';
+import Input from '~/components/Form/Input';
 
 type InputMockType = {
   label: string;
