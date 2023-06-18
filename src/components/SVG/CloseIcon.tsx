@@ -1,4 +1,4 @@
-import { SvgProp } from '~/@types/Svg';
+import { SvgProp } from '~/types/Svg';
 
 export function CloseIcon({ className }: SvgProp) {
   return (

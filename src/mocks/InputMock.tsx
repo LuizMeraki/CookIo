@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { PropertyType } from '~/@types/Form';
+import { PropertyType } from '~/types/Form';
 
 import { reducer } from '~/utils/reducer';
 
