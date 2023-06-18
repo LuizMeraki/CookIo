@@ -3,7 +3,7 @@ import {
   handleEmail,
   handleLength,
   handlePassword,
-} from '~/helpers/handleChange';
+} from '~/utils/handleChange';
 
 import { InputMock } from '~/mocks/InputMock';
 

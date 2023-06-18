@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 
 import { PropertyType } from '~/@types/Form';
 
-import { reducer } from '~/helpers/reducer';
+import { reducer } from '~/utils/reducer';
 
 import Input from '~/components/Form/Input';
 

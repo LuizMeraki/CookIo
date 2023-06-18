@@ -9,7 +9,7 @@ import {
   handleEmail,
   handleName,
   handlePassword,
-} from '~/helpers/handleChange';
+} from '~/utils/handleChange';
 
 type StoryType = StoryObj<typeof Input>;
 
