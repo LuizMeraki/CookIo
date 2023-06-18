@@ -9,6 +9,7 @@ export const metadata = {
 
 const baloo2 = Baloo_2({
   weight: ['400', '500', '600', '700', '800'],
+  fallback: ['Arial', 'Helvetica', 'cursive'],
   subsets: ['latin'],
 });
 
