@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from '.';
+import Button from '~/components/Form/Button';
 
 type ButtonType = typeof Button;
 type StoryType = StoryObj<ButtonType>;

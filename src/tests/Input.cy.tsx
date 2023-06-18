@@ -3,9 +3,9 @@ import {
   handleEmail,
   handleLength,
   handlePassword,
-} from '~/helpers/handleChange';
+} from '~/utils/handleChange';
 
-import { InputMock } from './mock';
+import { InputMock } from '~/mocks/InputMock';
 
 const errorClassName = 'styles_error_7YWZd';
 

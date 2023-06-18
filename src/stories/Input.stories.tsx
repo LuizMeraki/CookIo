@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputMock } from './mock';
+import { InputMock } from '~/mocks/InputMock';
 
-import Input from '.';
+import Input from '~/components/Form/Input';
 
 import {
   handleLength,
   handleEmail,
   handleName,
   handlePassword,
-} from '~/helpers/handleChange';
+} from '~/utils/handleChange';
 
 type StoryType = StoryObj<typeof Input>;
 

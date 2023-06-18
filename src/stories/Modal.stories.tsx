@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Modal from '.';
+import Modal from '~/components/Modal';
 
-import { RequestErrorTemplate } from './templates/RequestError';
+import { RequestErrorTemplate } from '~/components/Modal/templates/RequestError';
 
-import { handleModalRender } from '~/helpers/handleModal';
+import { handleModalRender } from '~/utils/handleModal';
 
 type ModalType = typeof Modal;
 

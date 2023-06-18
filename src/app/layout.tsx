@@ -1,6 +1,6 @@
 import { Baloo_2 } from 'next/font/google';
 
-import '../styles/global.scss';
+import '~/styles/global.scss';
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,6 +9,7 @@ export const metadata = {
 
 const baloo2 = Baloo_2({
   weight: ['400', '500', '600', '700', '800'],
+  fallback: ['Arial', 'Helvetica', 'cursive'],
   subsets: ['latin'],
 });
 

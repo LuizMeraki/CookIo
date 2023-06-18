@@ -1,4 +1,4 @@
-import { ReducerActionType } from '~/@types/Form';
+import { ReducerActionType } from '~/types/Form';
 
 export function reducer(state: any, action: ReducerActionType) {
   const property = action.property;

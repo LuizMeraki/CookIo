@@ -1,6 +1,6 @@
-import Modal from '.';
-import { RequestErrorTemplate } from './templates/RequestError';
-import { handleModalRender } from '~/helpers/handleModal';
+import Modal from '~/components/Modal';
+import { RequestErrorTemplate } from '~/components/Modal/templates/RequestError';
+import { handleModalRender } from '~/utils/handleModal';
 
 describe('Modal', () => {
   const primaryModalId = 'modal-primary';

@@ -3,7 +3,7 @@
 import { createPortal } from 'react-dom';
 import { useRef, useState, useEffect } from 'react';
 
-import { handleModalRender } from '~/helpers/handleModal';
+import { handleModalRender } from '~/utils/handleModal';
 
 import { CloseIcon } from '~/components/SVG/CloseIcon';
 

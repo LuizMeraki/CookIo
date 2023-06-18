@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import RedirectLink from '.';
+import RedirectLink from '~/components/Form/RedirectLink';
 
 type RedirectLinkType = typeof RedirectLink;
 type StoryType = StoryObj<RedirectLinkType>;
