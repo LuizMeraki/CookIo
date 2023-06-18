@@ -1,6 +1,6 @@
 import { Baloo_2 } from 'next/font/google';
 
-import '../styles/global.scss';
+import '~/styles/global.scss';
 
 export const metadata = {
   title: 'Create Next App',
