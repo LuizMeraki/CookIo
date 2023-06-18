@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import AuthButton from '.';
+import AuthButton from '~/components/Form/AuthButton';
 
 type AuthButtonType = typeof AuthButton;
 type StoryType = StoryObj<AuthButtonType>;
