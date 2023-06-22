@@ -2,6 +2,9 @@ import Script from 'next/script';
 
 import { Baloo_2 } from 'next/font/google';
 
+import Modal from '~/components/Modal';
+import { RequestErrorTemplate } from '~/components/Modal/templates/RequestError';
+
 import '~/styles/global.scss';
 
 export const metadata = {
@@ -18,7 +21,16 @@ const baloo2 = Baloo_2({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-br">
-      <body className={baloo2.className}>{children}</body>
+      <body className={baloo2.className}>
+        {children}
+
+        <div id="modal-root" />
+
+        <Modal id="modal-error">
+          <RequestErrorTemplate />
+        </Modal>
+      </body>
+
       <Script src="https://accounts.google.com/gsi/client" async defer />
     </html>
   );
