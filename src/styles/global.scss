@@ -6,6 +6,9 @@
   box-sizing: border-box;
 
   color: var(--black-100);
+
+  font-size: 1.6rem;
+  font-family: inherit;
   line-height: 3.2rem;
 }
 
@@ -14,7 +17,6 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
   background-color: var(--white-200);
 }
 
