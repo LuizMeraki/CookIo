@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 
 export function useClientSide(callback: () => any) {
   const [mounted, setMounted] = useState(false);
-  const functionReturn = useRef<any>(null);
+  const functionReturn = useRef<any>();
 
   useEffect(() => {
     setMounted(true);
