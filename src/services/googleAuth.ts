@@ -14,6 +14,7 @@ export function initGoogleAuth() {
       size: 'large',
       text: 'continue_with',
       shape: 'pill',
+      width: '250px',
     });
 
     // @ts-ignore
