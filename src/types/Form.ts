@@ -1,6 +1,11 @@
 import { Dispatch } from 'react';
 
-export type PropertyType = 'recipeName' | 'username' | 'email' | 'password';
+export type PropertyType =
+  | 'recipeName'
+  | 'username'
+  | 'email'
+  | 'password'
+  | 'confirmPassword';
 
 export type ReducerActionType = {
   property: PropertyType;
