@@ -86,3 +86,22 @@ export function handlePassword(
     dispatch({ property, payload: { value, error: validationValue } });
   }
 }
+
+export function handleConfirmPassword(
+  e: ChangeEvent<HTMLInputElement>,
+  password: string | null,
+  dispatch: DispatchType,
+  property: PropertyType
+) {
+  const confirmPassword = e.target.value;
+  const isPasswordEqual = password === confirmPassword;
+
+  if (!isPasswordEqual) {
+    dispatch({
+      property,
+      payload: { value: confirmPassword, error: 'as senhas não correspondem' },
+    });
+  } else {
+    dispatch({ property, payload: { value: confirmPassword, error: null } });
+  }
+}
