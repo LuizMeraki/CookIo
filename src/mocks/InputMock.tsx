@@ -1,6 +1,13 @@
-import { useReducer } from 'react';
+import { useReducer, ChangeEvent } from 'react';
 
 import { PropertyType } from '~/types/Form';
+
+import {
+  handleLength,
+  handleName,
+  handleEmail,
+  handlePassword,
+} from '~/utils/handleChange';
 
 import { reducer } from '~/utils/reducer';
 
@@ -11,9 +18,6 @@ type InputMockType = {
   type: string;
   placeholder: string;
   property: PropertyType;
-  min: number;
-  max: number;
-  handleChange: (...params: any) => void;
 };
 
 export const initialValueMock = {
@@ -23,25 +27,32 @@ export const initialValueMock = {
   password: { value: '', error: null },
 };
 
-export function InputMock({
-  label,
-  type,
-  placeholder,
-  property,
-  handleChange,
-  min,
-  max,
-}: InputMockType) {
+export function InputMock({ label, type, placeholder, property }: InputMockType) {
   const [state, dispatch] = useReducer(reducer, initialValueMock);
+
+  function switchHandler(e: ChangeEvent<HTMLInputElement>) {
+    switch (property) {
+      case 'recipeName':
+        return handleLength(e, dispatch, property, 2, 100);
+      case 'username':
+        return handleName(e, dispatch, property, 2, 50);
+      case 'email':
+        return handleEmail(e, dispatch, property);
+      case 'password':
+        return handlePassword(e, dispatch, property, 8, 50);
+      default:
+        return null;
+    }
+  }
 
   return (
     <Input
       label={label}
       type={type}
       placeholder={placeholder}
-      error={state[property]!.error}
-      state={state[property]!.value}
-      onChange={(e) => handleChange(e, dispatch, property, min, max)}
+      error={state[property].error}
+      state={state[property].value}
+      onChange={switchHandler}
     />
   );
 }
