@@ -14,12 +14,12 @@ import { reducer } from '~/utils/reducer';
 
 import Input from '~/components/Form/Input';
 
-type InputMockType = {
+interface InputMockProps {
   label: string;
   type: string;
   placeholder: string;
   property: PropertyType;
-};
+}
 
 export const initialValueMock = {
   recipeName: { value: '', error: null },
@@ -29,7 +29,7 @@ export const initialValueMock = {
   confirmPassword: { value: '', error: null },
 };
 
-export function InputMock({ label, type, placeholder, property }: InputMockType) {
+export function InputMock({ label, type, placeholder, property }: InputMockProps) {
   const [state, dispatch] = useReducer(reducer, initialValueMock);
 
   function switchHandler(e: ChangeEvent<HTMLInputElement>) {
