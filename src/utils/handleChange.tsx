@@ -10,6 +10,10 @@ function verifyLength(value: string, min: number, max: number) {
   return null;
 }
 
+function verifyPasswords(password: string, confirmPassword: string) {
+  return password === confirmPassword;
+}
+
 export function handleLength(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
@@ -68,13 +72,18 @@ export function handleEmail(
 
 export function handlePassword(
   e: ChangeEvent<HTMLInputElement>,
+  confirmPassword: { value: string; error: string | null },
   dispatch: DispatchType,
   property: PropertyType,
+  confirmPasswordProperty: PropertyType,
   min: number,
   max: number
 ) {
   const value = e.target.value;
+
+  const isConfirmPasswordFilled = confirmPassword.value !== '';
   const isPasswordValid = /^[a-zA-Z0-9._!@#$%&]+$/g.test(value);
+  const isPasswordsEqual = verifyPasswords(value, confirmPassword.value);
   const validationValue = verifyLength(value, min, max);
 
   if (!isPasswordValid) {
@@ -82,21 +91,35 @@ export function handlePassword(
       property,
       payload: { value, error: 'informe apenas caracteres de a-z, 0-9 ou ._!@#$%&' },
     });
+
+    return;
   } else {
     dispatch({ property, payload: { value, error: validationValue } });
+  }
+
+  if (!isPasswordsEqual && isConfirmPasswordFilled) {
+    dispatch({
+      property: confirmPasswordProperty,
+      payload: { value: confirmPassword.value, error: 'as senhas não correspondem' },
+    });
+  } else {
+    dispatch({
+      property: confirmPasswordProperty,
+      payload: { value: confirmPassword.value, error: null },
+    });
   }
 }
 
 export function handleConfirmPassword(
   e: ChangeEvent<HTMLInputElement>,
-  password: string | null,
+  password: string,
   dispatch: DispatchType,
   property: PropertyType
 ) {
   const confirmPassword = e.target.value;
-  const isPasswordEqual = password === confirmPassword;
+  const isPasswordsEqual = verifyPasswords(password, confirmPassword);
 
-  if (!isPasswordEqual) {
+  if (!isPasswordsEqual) {
     dispatch({
       property,
       payload: { value: confirmPassword, error: 'as senhas não correspondem' },
