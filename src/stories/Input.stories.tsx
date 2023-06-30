@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputMock } from '~/mocks/InputMock';
+import { InputMock, InputPasswordMock } from '~/mocks/InputMock';
 
 import Input from '~/components/Form/Input';
 
@@ -81,4 +81,8 @@ export const Password = {
     min: 8,
     max: 50,
   },
+};
+
+export const ConfirmPassword = {
+  render: () => <InputPasswordMock />,
 };
