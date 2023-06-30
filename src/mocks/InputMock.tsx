@@ -7,6 +7,7 @@ import {
   handleName,
   handleEmail,
   handlePassword,
+  handleConfirmPassword,
 } from '~/utils/handleChange';
 
 import { reducer } from '~/utils/reducer';
@@ -25,6 +26,7 @@ export const initialValueMock = {
   username: { value: '', error: null },
   email: { value: '', error: null },
   password: { value: '', error: null },
+  confirmPassword: { value: '', error: null },
 };
 
 export function InputMock({ label, type, placeholder, property }: InputMockType) {
@@ -54,5 +56,37 @@ export function InputMock({ label, type, placeholder, property }: InputMockType)
       state={state[property].value}
       onChange={switchHandler}
     />
+  );
+}
+
+export function InputPasswordMock() {
+  const [state, dispatch] = useReducer(reducer, initialValueMock);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <Input
+          label="Criar Senha"
+          type="password"
+          placeholder="########"
+          error={state.password.error}
+          state={state.password.value}
+          onChange={(e) => handlePassword(e, dispatch, 'password', 8, 50)}
+        />
+      </div>
+
+      <div>
+        <Input
+          label="Confirmar Senha"
+          type="password"
+          placeholder="########"
+          error={state.confirmPassword.error}
+          state={state.confirmPassword.value}
+          onChange={(e) =>
+            handleConfirmPassword(e, state.password.value, dispatch, 'confirmPassword')
+          }
+        />
+      </div>
+    </div>
   );
 }
