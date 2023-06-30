@@ -1,6 +1,6 @@
 import { InputMock } from '~/mocks/InputMock';
 
-const errorClassName = 'styles_error_7YWZd';
+const errorClassName = 'styles_error__7YWZd';
 
 describe('Input - Length test', () => {
   const minLength = 2;
