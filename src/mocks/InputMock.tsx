@@ -37,19 +37,11 @@ export function InputMock({ label, type, placeholder, property }: InputMockProps
       case 'recipeName':
         return handleLength(e, dispatch, property, 2, 100);
       case 'username':
-        return handleName(e, dispatch, property, 2, 50);
+        return handleName(e, dispatch);
       case 'email':
-        return handleEmail(e, dispatch, property);
+        return handleEmail(e, dispatch);
       case 'password':
-        return handlePassword(
-          e,
-          state.confirmPassword,
-          dispatch,
-          property,
-          'confirmPassword',
-          8,
-          50
-        );
+        return handlePassword(e, state.confirmPassword, dispatch);
       default:
         return null;
     }
@@ -79,17 +71,7 @@ export function InputPasswordMock() {
           placeholder="########"
           error={state.password.error}
           state={state.password.value}
-          onChange={(e) =>
-            handlePassword(
-              e,
-              state.confirmPassword,
-              dispatch,
-              'password',
-              'confirmPassword',
-              8,
-              50
-            )
-          }
+          onChange={(e) => handlePassword(e, state.confirmPassword, dispatch)}
         />
       </div>
 
@@ -100,9 +82,7 @@ export function InputPasswordMock() {
           placeholder="########"
           error={state.confirmPassword.error}
           state={state.confirmPassword.value}
-          onChange={(e) =>
-            handleConfirmPassword(e, state.password.value, dispatch, 'confirmPassword')
-          }
+          onChange={(e) => handleConfirmPassword(e, state.password.value, dispatch)}
         />
       </div>
     </div>

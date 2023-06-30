@@ -30,71 +30,59 @@ export function handleLength(
   });
 }
 
-export function handleName(
-  e: ChangeEvent<HTMLInputElement>,
-  dispatch: DispatchType,
-  property: PropertyType,
-  min: number,
-  max: number
-) {
+export function handleName(e: ChangeEvent<HTMLInputElement>, dispatch: DispatchType) {
   const value = e.target.value;
-  const validationValue = verifyLength(value, min, max);
+  const validationValue = verifyLength(value, 2, 50);
   const hasNonAlphabeticCharacters = /[^A-Za-z\s]/.test(value);
 
   if (hasNonAlphabeticCharacters) {
     dispatch({
-      property,
+      property: 'username',
       payload: { value, error: 'informe apenas caracteres alfabéticos' },
     });
   } else {
-    dispatch({ property, payload: { value, error: validationValue } });
+    dispatch({ property: 'username', payload: { value, error: validationValue } });
   }
 }
 
-export function handleEmail(
-  e: ChangeEvent<HTMLInputElement>,
-  dispatch: DispatchType,
-  property: PropertyType
-) {
+export function handleEmail(e: ChangeEvent<HTMLInputElement>, dispatch: DispatchType) {
   const value = e.target.value;
   const regularExpression = /^[a-z0-9._-]+@(gmail|hotmail|outlook|yahoo).(com|com.br)$/;
   const isEmailValid = regularExpression.test(value);
 
   if (!isEmailValid) {
     dispatch({
-      property,
+      property: 'email',
       payload: { value, error: 'informe um e-mail válido' },
     });
   } else {
-    dispatch({ property, payload: { value, error: null } });
+    dispatch({ property: 'email', payload: { value, error: null } });
   }
 }
 
 export function handlePassword(
   e: ChangeEvent<HTMLInputElement>,
   confirmPassword: { value: string; error: string | null },
-  dispatch: DispatchType,
-  property: PropertyType,
-  confirmPasswordProperty: PropertyType,
-  min: number,
-  max: number
+  dispatch: DispatchType
 ) {
   const value = e.target.value;
+  const passwordProperty = 'password';
+  const confirmPasswordProperty = 'confirmPassword';
 
   const isConfirmPasswordFilled = confirmPassword.value !== '';
   const isPasswordValid = /^[a-zA-Z0-9._!@#$%&]+$/g.test(value);
   const isPasswordsEqual = verifyPasswords(value, confirmPassword.value);
-  const validationValue = verifyLength(value, min, max);
+  const validationValue = verifyLength(value, 8, 50);
 
   if (!isPasswordValid) {
     dispatch({
-      property,
+      property: passwordProperty,
       payload: { value, error: 'informe apenas caracteres de a-z, 0-9 ou ._!@#$%&' },
     });
 
     return;
   } else {
-    dispatch({ property, payload: { value, error: validationValue } });
+    dispatch({ property: passwordProperty, payload: { value, error: validationValue } });
   }
 
   if (!isPasswordsEqual && isConfirmPasswordFilled) {
@@ -113,18 +101,21 @@ export function handlePassword(
 export function handleConfirmPassword(
   e: ChangeEvent<HTMLInputElement>,
   password: string,
-  dispatch: DispatchType,
-  property: PropertyType
+  dispatch: DispatchType
 ) {
   const confirmPassword = e.target.value;
+  const confirmPasswordProperty = 'confirmPassword';
   const isPasswordsEqual = verifyPasswords(password, confirmPassword);
 
   if (!isPasswordsEqual) {
     dispatch({
-      property,
+      property: confirmPasswordProperty,
       payload: { value: confirmPassword, error: 'as senhas não correspondem' },
     });
   } else {
-    dispatch({ property, payload: { value: confirmPassword, error: null } });
+    dispatch({
+      property: confirmPasswordProperty,
+      payload: { value: confirmPassword, error: null },
+    });
   }
 }

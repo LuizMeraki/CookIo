@@ -1,10 +1,3 @@
-import {
-  handleName,
-  handleEmail,
-  handleLength,
-  handlePassword,
-} from '~/utils/handleChange';
-
 import { InputMock } from '~/mocks/InputMock';
 
 const errorClassName = 'styles_error_7YWZd';
@@ -20,9 +13,6 @@ describe('Input - Length test', () => {
         type="text"
         placeholder="nomeie sua receita"
         property="recipeName"
-        handleChange={handleLength}
-        min={minLength}
-        max={maxLength}
       />
     );
   });
@@ -55,9 +45,6 @@ describe('Input - E-mail test', () => {
         type="text"
         placeholder="exemplo@gmail.com"
         property="email"
-        handleChange={handleEmail}
-        min={0}
-        max={0}
       />
     );
   });
@@ -104,15 +91,7 @@ describe('Input - Name test', () => {
 
   beforeEach(() => {
     cy.mount(
-      <InputMock
-        label="Nome"
-        type="text"
-        placeholder="seu nome"
-        property="username"
-        handleChange={handleName}
-        min={minLength}
-        max={maxLength}
-      />
+      <InputMock label="Nome" type="text" placeholder="seu nome" property="username" />
     );
   });
 
@@ -152,9 +131,6 @@ describe('Input - Password test', () => {
         type="password"
         placeholder="########"
         property="password"
-        handleChange={handlePassword}
-        min={minLength}
-        max={maxLength}
       />
     );
   });
