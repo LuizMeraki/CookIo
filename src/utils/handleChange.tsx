@@ -14,6 +14,18 @@ function verifyPasswords(password: string, confirmPassword: string) {
   return password === confirmPassword;
 }
 
+export function handleExternalErrors(
+  value: string,
+  error: string | null,
+  dispatch: DispatchType,
+  property: PropertyType
+) {
+  dispatch({
+    property,
+    payload: { value, error },
+  });
+}
+
 export function handleLength(
   e: ChangeEvent<HTMLInputElement>,
   dispatch: DispatchType,
