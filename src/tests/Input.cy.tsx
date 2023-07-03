@@ -1,13 +1,6 @@
-import {
-  handleName,
-  handleEmail,
-  handleLength,
-  handlePassword,
-} from '~/utils/handleChange';
+import { InputMock, InputPasswordMock } from '~/mocks/Input';
 
-import { InputMock } from '~/mocks/InputMock';
-
-const errorClassName = 'styles_error_7YWZd';
+const errorClassName = 'styles_error__7YWZd';
 
 describe('Input - Length test', () => {
   const minLength = 2;
@@ -20,9 +13,6 @@ describe('Input - Length test', () => {
         type="text"
         placeholder="nomeie sua receita"
         property="recipeName"
-        handleChange={handleLength}
-        min={minLength}
-        max={maxLength}
       />
     );
   });
@@ -55,9 +45,6 @@ describe('Input - E-mail test', () => {
         type="text"
         placeholder="exemplo@gmail.com"
         property="email"
-        handleChange={handleEmail}
-        min={0}
-        max={0}
       />
     );
   });
@@ -104,15 +91,7 @@ describe('Input - Name test', () => {
 
   beforeEach(() => {
     cy.mount(
-      <InputMock
-        label="Nome"
-        type="text"
-        placeholder="seu nome"
-        property="username"
-        handleChange={handleName}
-        min={minLength}
-        max={maxLength}
-      />
+      <InputMock label="Nome" type="text" placeholder="seu nome" property="username" />
     );
   });
 
@@ -152,9 +131,6 @@ describe('Input - Password test', () => {
         type="password"
         placeholder="########"
         property="password"
-        handleChange={handlePassword}
-        min={minLength}
-        max={maxLength}
       />
     );
   });
@@ -181,5 +157,31 @@ describe('Input - Password test', () => {
   it('Should be valid length', () => {
     cy.get('input').type('!my._p@s$word#1%_&');
     cy.get('input').should('not.have.class', errorClassName);
+  });
+});
+
+describe('Input - Confirm Password Test', () => {
+  beforeEach(() => {
+    cy.mount(<InputPasswordMock />);
+  });
+
+  it('Should be the same passwords', () => {
+    cy.get('input').each(($input) => {
+      cy.wrap($input).type('my_password');
+      cy.wrap($input).should('not.have.class', errorClassName);
+    });
+
+    cy.get('input').each(($input) => {
+      cy.wrap($input).type('_1');
+      cy.wrap($input).should('not.have.class', errorClassName);
+    });
+  });
+
+  it('Should have error', () => {
+    cy.get('input').eq(0).type('my_password_1').should('not.have.class', errorClassName);
+    cy.get('input').eq(1).type('my_password_2').should('have.class', errorClassName);
+
+    cy.get('input').eq(0).type('_1').should('not.have.class', errorClassName);
+    cy.get('input').eq(1).type('_2').should('have.class', errorClassName);
   });
 });
