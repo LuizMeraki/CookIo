@@ -44,31 +44,33 @@ export function handleLength(
 
 export function handleName(e: ChangeEvent<HTMLInputElement>, dispatch: DispatchType) {
   const value = e.target.value;
+  const usernameProperty = 'username';
   const validationValue = verifyLength(value, 2, 50);
   const hasNonAlphabeticCharacters = /[^A-Za-z\s]/.test(value);
 
   if (hasNonAlphabeticCharacters) {
     dispatch({
-      property: 'username',
+      property: usernameProperty,
       payload: { value, error: 'informe apenas caracteres alfabéticos' },
     });
   } else {
-    dispatch({ property: 'username', payload: { value, error: validationValue } });
+    dispatch({ property: usernameProperty, payload: { value, error: validationValue } });
   }
 }
 
 export function handleEmail(e: ChangeEvent<HTMLInputElement>, dispatch: DispatchType) {
   const value = e.target.value;
+  const emailProperty = 'email';
   const regularExpression = /^[a-z0-9._-]+@(gmail|hotmail|outlook|yahoo).(com|com.br)$/;
   const isEmailValid = regularExpression.test(value);
 
   if (!isEmailValid) {
     dispatch({
-      property: 'email',
+      property: emailProperty,
       payload: { value, error: 'informe um e-mail válido' },
     });
   } else {
-    dispatch({ property: 'email', payload: { value, error: null } });
+    dispatch({ property: emailProperty, payload: { value, error: null } });
   }
 }
 
