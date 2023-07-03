@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 
-import { InputMock, InputPasswordMock } from '~/mocks/InputMock';
+import { InputMock, InputPasswordMock } from '~/mocks/Input';
 
 import Input from '~/components/Form/Input';
 

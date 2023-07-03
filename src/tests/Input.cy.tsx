@@ -1,4 +1,4 @@
-import { InputMock } from '~/mocks/InputMock';
+import { InputMock } from '~/mocks/Input';
 
 const errorClassName = 'styles_error__7YWZd';
 
