@@ -1,4 +1,4 @@
-import { InputMock } from '~/mocks/Input';
+import { InputMock, InputPasswordMock } from '~/mocks/Input';
 
 const errorClassName = 'styles_error__7YWZd';
 
@@ -157,5 +157,31 @@ describe('Input - Password test', () => {
   it('Should be valid length', () => {
     cy.get('input').type('!my._p@s$word#1%_&');
     cy.get('input').should('not.have.class', errorClassName);
+  });
+});
+
+describe('Input - Confirm Password Test', () => {
+  beforeEach(() => {
+    cy.mount(<InputPasswordMock />);
+  });
+
+  it('Should be the same passwords', () => {
+    cy.get('input').each(($input) => {
+      cy.wrap($input).type('my_password');
+      cy.wrap($input).should('not.have.class', errorClassName);
+    });
+
+    cy.get('input').each(($input) => {
+      cy.wrap($input).type('_1');
+      cy.wrap($input).should('not.have.class', errorClassName);
+    });
+  });
+
+  it('Should have error', () => {
+    cy.get('input').eq(0).type('my_password_1').should('not.have.class', errorClassName);
+    cy.get('input').eq(1).type('my_password_2').should('have.class', errorClassName);
+
+    cy.get('input').eq(0).type('_1').should('not.have.class', errorClassName);
+    cy.get('input').eq(1).type('_2').should('have.class', errorClassName);
   });
 });
