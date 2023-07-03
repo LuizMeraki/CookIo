@@ -16,12 +16,13 @@ const baloo2 = Baloo_2({
   weight: ['400', '500', '600', '700', '800'],
   fallback: ['Arial', 'Helvetica', 'cursive'],
   subsets: ['latin'],
+  variable: '--font-baloo-2',
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-br">
-      <body className={baloo2.className}>
+      <body className={baloo2.variable}>
         {children}
 
         <div id="modal-root" />
