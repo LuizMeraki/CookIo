@@ -22,7 +22,7 @@ export type ReducerStateType = {
 
 export type ReducerActionType = {
   property: PropertyType;
-  payload: { value: string; error: string | null };
+  payload: { value?: string; error: string | null };
 };
 
 export type DispatchType = Dispatch<ReducerActionType>;
