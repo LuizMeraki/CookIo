@@ -1,6 +1,6 @@
-import { ReducerActionType } from '~/types/Form';
+import { ReducerActionType, ReducerStateType } from '~/types/Form';
 
-export function reducer(state: any, action: ReducerActionType) {
+export function reducer(state: ReducerStateType, action: ReducerActionType) {
   const property = action.property;
   const value = action.payload.value;
   const error = action.payload.error;
