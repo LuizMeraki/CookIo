@@ -15,14 +15,13 @@ function verifyPasswords(password: string, confirmPassword: string) {
 }
 
 export function handleExternalErrors(
-  value: string,
   error: string | null,
   dispatch: DispatchType,
   property: PropertyType
 ) {
   dispatch({
     property,
-    payload: { value, error },
+    payload: { error },
   });
 }
 
