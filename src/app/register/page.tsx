@@ -44,8 +44,8 @@ function Register() {
               label="Nome"
               type="text"
               placeholder="seu nome"
-              state={state.username.value}
-              error={state.username.error}
+              state={state.username!.value}
+              error={state.username!.error}
               onChange={(e) => handleName(e, dispatch)}
             />
           </div>
@@ -55,8 +55,8 @@ function Register() {
               label="E-mail"
               type="email"
               placeholder="exemplo@gmail.com"
-              state={state.email.value}
-              error={state.email.error}
+              state={state.email!.value}
+              error={state.email!.error}
               onChange={(e) => handleEmail(e, dispatch)}
             />
           </div>
@@ -66,9 +66,9 @@ function Register() {
               label="Criar Senha"
               type="password"
               placeholder="########"
-              state={state.password.value}
-              error={state.password.error}
-              onChange={(e) => handlePassword(e, state.confirmPassword, dispatch)}
+              state={state.password!.value}
+              error={state.password!.error}
+              onChange={(e) => handlePassword(e, state.confirmPassword!, dispatch)}
             />
           </div>
 
@@ -76,9 +76,9 @@ function Register() {
             label="Confirmar Senha"
             type="password"
             placeholder="########"
-            state={state.confirmPassword.value}
-            error={state.confirmPassword.error}
-            onChange={(e) => handleConfirmPassword(e, state.password.value, dispatch)}
+            state={state.confirmPassword!.value}
+            error={state.confirmPassword!.error}
+            onChange={(e) => handleConfirmPassword(e, state.password!.value, dispatch)}
           />
 
           <div className={styles.redirectLinkContainer}>
