@@ -13,6 +13,7 @@ export type PropertyType =
   | 'confirmPassword';
 
 export type ReducerStateType = {
+  recipeName?: StateValueType;
   username?: StateValueType;
   email?: StateValueType;
   password?: StateValueType;
