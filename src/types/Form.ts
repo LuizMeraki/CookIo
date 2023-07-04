@@ -25,3 +25,11 @@ export type ReducerActionType = {
 };
 
 export type DispatchType = Dispatch<ReducerActionType>;
+
+export type AuthDataType = {
+  name?: string;
+  email: string;
+  password: string;
+};
+
+export type AuthParamsType = (endpoint: string, data: AuthDataType) => Promise<void>;
