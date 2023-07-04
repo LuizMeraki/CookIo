@@ -33,4 +33,8 @@ export type AuthDataType = {
   password: string;
 };
 
-export type AuthParamsType = (endpoint: string, data: AuthDataType) => Promise<void>;
+export type AuthParamsType = (
+  endpoint: string,
+  data: AuthDataType,
+  dispatch: DispatchType
+) => Promise<void>;
