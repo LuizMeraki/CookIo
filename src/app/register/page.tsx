@@ -14,6 +14,7 @@ import { useClientSide } from '~/hooks/useClientSide';
 import { initGoogleAuth } from '~/services/googleAuth';
 
 import { reducer } from '~/utils/reducer';
+import { handleButtonEnable } from '~/utils/handleButtonEnable';
 import {
   handleConfirmPassword,
   handleEmail,
@@ -35,6 +36,8 @@ const initialValue = {
 function Register() {
   const [state, dispatch] = useReducer(reducer, initialValue);
   const [auth, isLoading] = useAuth();
+
+  const isButtonEnabled = handleButtonEnable(state, isLoading);
 
   useClientSide(initGoogleAuth);
 
@@ -100,6 +103,7 @@ function Register() {
               type="submit"
               title="cadastrar conta"
               aria-label="cadastrar em cookio"
+              disabled={isButtonEnabled}
             >
               Cadastrar
             </Button>
