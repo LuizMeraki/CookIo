@@ -41,7 +41,7 @@ export function InputMock({ label, type, placeholder, property }: InputMockProps
       case 'email':
         return handleEmail(e, dispatch);
       case 'password':
-        return handlePassword(e, state.confirmPassword, dispatch);
+        return handlePassword(e, state.confirmPassword!.value, dispatch);
       default:
         return null;
     }
@@ -52,8 +52,8 @@ export function InputMock({ label, type, placeholder, property }: InputMockProps
       label={label}
       type={type}
       placeholder={placeholder}
-      error={state[property].error}
-      state={state[property].value}
+      error={state[property]!.error}
+      state={state[property]!.value}
       onChange={switchHandler}
     />
   );
@@ -69,9 +69,9 @@ export function InputPasswordMock() {
           label="Criar Senha"
           type="password"
           placeholder="########"
-          error={state.password.error}
-          state={state.password.value}
-          onChange={(e) => handlePassword(e, state.confirmPassword, dispatch)}
+          error={state.password!.error}
+          state={state.password!.value}
+          onChange={(e) => handlePassword(e, state.confirmPassword!.value, dispatch)}
         />
       </div>
 
@@ -80,9 +80,9 @@ export function InputPasswordMock() {
           label="Confirmar Senha"
           type="password"
           placeholder="########"
-          error={state.confirmPassword.error}
-          state={state.confirmPassword.value}
-          onChange={(e) => handleConfirmPassword(e, state.password.value, dispatch)}
+          error={state.confirmPassword!.error}
+          state={state.confirmPassword!.value}
+          onChange={(e) => handleConfirmPassword(e, state.password!.value, dispatch)}
         />
       </div>
     </div>
