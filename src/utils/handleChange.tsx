@@ -15,14 +15,13 @@ function verifyPasswords(password: string, confirmPassword: string) {
 }
 
 export function handleExternalErrors(
-  value: string,
   error: string | null,
   dispatch: DispatchType,
   property: PropertyType
 ) {
   dispatch({
     property,
-    payload: { value, error },
+    payload: { error },
   });
 }
 
@@ -76,16 +75,16 @@ export function handleEmail(e: ChangeEvent<HTMLInputElement>, dispatch: Dispatch
 
 export function handlePassword(
   e: ChangeEvent<HTMLInputElement>,
-  confirmPassword: { value: string; error: string | null },
+  confirmPassword: string,
   dispatch: DispatchType
 ) {
   const value = e.target.value;
   const passwordProperty = 'password';
   const confirmPasswordProperty = 'confirmPassword';
 
-  const isConfirmPasswordFilled = confirmPassword.value !== '';
+  const isConfirmPasswordFilled = confirmPassword !== '';
   const isPasswordValid = /^[a-zA-Z0-9._!@#$%&]+$/g.test(value);
-  const isPasswordsEqual = verifyPasswords(value, confirmPassword.value);
+  const isPasswordsEqual = verifyPasswords(value, confirmPassword);
   const validationValue = verifyLength(value, 8, 50);
 
   if (!isPasswordValid) {
@@ -102,12 +101,12 @@ export function handlePassword(
   if (!isPasswordsEqual && isConfirmPasswordFilled) {
     dispatch({
       property: confirmPasswordProperty,
-      payload: { value: confirmPassword.value, error: 'as senhas não correspondem' },
+      payload: { value: confirmPassword, error: 'as senhas não correspondem' },
     });
   } else {
     dispatch({
       property: confirmPasswordProperty,
-      payload: { value: confirmPassword.value, error: null },
+      payload: { value: confirmPassword, error: null },
     });
   }
 }
