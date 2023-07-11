@@ -10,7 +10,7 @@ function verifyLength(value: string, min: number, max: number) {
   return null;
 }
 
-function verifyPasswords(password: string, confirmPassword: string) {
+function verifyPasswords(password: string, confirmPassword: string | undefined) {
   return password === confirmPassword;
 }
 
@@ -75,8 +75,8 @@ export function handleEmail(e: ChangeEvent<HTMLInputElement>, dispatch: Dispatch
 
 export function handlePassword(
   e: ChangeEvent<HTMLInputElement>,
-  confirmPassword: string,
-  dispatch: DispatchType
+  dispatch: DispatchType,
+  confirmPassword?: string
 ) {
   const value = e.target.value;
   const passwordProperty = 'password';
@@ -97,6 +97,8 @@ export function handlePassword(
   } else {
     dispatch({ property: passwordProperty, payload: { value, error: validationValue } });
   }
+
+  if (!confirmPassword) return;
 
   if (!isPasswordsEqual && isConfirmPasswordFilled) {
     dispatch({
