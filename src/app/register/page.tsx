@@ -83,7 +83,7 @@ function Register() {
                 state={state.password!.value}
                 error={state.password!.error}
                 onChange={(e) =>
-                  handlePassword(e, state.confirmPassword!.value, dispatch)
+                  handlePassword(e, dispatch, state.confirmPassword!.value)
                 }
               />
             </div>

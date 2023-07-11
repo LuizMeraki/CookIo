@@ -41,7 +41,7 @@ export function InputMock({ label, type, placeholder, property }: InputMockProps
       case 'email':
         return handleEmail(e, dispatch);
       case 'password':
-        return handlePassword(e, state.confirmPassword!.value, dispatch);
+        return handlePassword(e, dispatch, state.confirmPassword!.value);
       default:
         return null;
     }
@@ -71,7 +71,7 @@ export function InputPasswordMock() {
           placeholder="########"
           error={state.password!.error}
           state={state.password!.value}
-          onChange={(e) => handlePassword(e, state.confirmPassword!.value, dispatch)}
+          onChange={(e) => handlePassword(e, dispatch, state.confirmPassword!.value)}
         />
       </div>
 
