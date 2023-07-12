@@ -4,14 +4,12 @@ import { useReducer } from 'react';
 
 import Input from '~/components/Form/Input';
 import Button from '~/components/Form/Button';
+import AuthButton from '~/components/Form/AuthButton';
 import withoutAuth from '~/components/HOC/withoutAuth';
 import PageLoading from '~/components/PageLoading';
 import RedirectLink from '~/components/Form/RedirectLink';
 
 import { useAuth } from '~/hooks/useAuth';
-import { useClientSide } from '~/hooks/useClientSide';
-
-import { initGoogleAuth } from '~/services/googleAuth';
 
 import { reducer } from '~/utils/reducer';
 import { handleButtonEnable } from '~/utils/handleButtonEnable';
@@ -38,8 +36,6 @@ function Register() {
   const [auth, isLoading] = useAuth();
 
   const isButtonEnabled = handleButtonEnable(state, isLoading);
-
-  useClientSide(initGoogleAuth);
 
   return (
     <>
@@ -113,10 +109,7 @@ function Register() {
             <span className={styles.textOr}>OU</span>
 
             <div className={styles.otherMethodsContainer}>
-              <div
-                id="google-sign-in"
-                aria-label="fazer cadastro usando sua conta google"
-              />
+              <AuthButton />
             </div>
           </form>
         </section>
