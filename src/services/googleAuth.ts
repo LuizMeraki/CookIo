@@ -1,3 +1,10 @@
+import { redirect } from 'next/navigation';
+
+import { handleModalRender } from '~/utils/handleModal';
+
+import { api } from './api';
+import { setToken } from './token';
+
 export function redirectUserToGoogleAuth() {
   const scopes = {
     profile: 'https://www.googleapis.com/auth/userinfo.profile',
@@ -12,4 +19,23 @@ export function redirectUserToGoogleAuth() {
   });
 
   window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
+}
+
+export async function handleGoogleAuth() {
+  try {
+    const hash = window.location.hash.substring(1);
+    const accessToken = new URLSearchParams(hash).get('access_token');
+
+    const response = await api.post('/auth/me', { access_token: accessToken });
+    const token = response.data.resultUser.token;
+
+    setToken(token);
+    redirect('/');
+  } catch (e: any) {
+    const error = e.response?.data.error;
+    const modalId = error ? 'modal-existing-email-error' : 'modal-error';
+
+    handleModalRender(modalId);
+    redirect('/login');
+  }
 }
