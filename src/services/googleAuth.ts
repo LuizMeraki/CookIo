@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
-
 import { handleModalRender } from '~/utils/handleModal';
 
 import { api } from './api';
@@ -22,6 +20,8 @@ export function redirectUserToGoogleAuth() {
 }
 
 export async function handleGoogleAuth() {
+  let redirectPath = '/';
+
   try {
     const hash = window.location.hash.substring(1);
     const accessToken = new URLSearchParams(hash).get('access_token');
@@ -30,12 +30,13 @@ export async function handleGoogleAuth() {
     const token = response.data.resultUser.token;
 
     setToken(token);
-    redirect('/');
   } catch (e: any) {
     const error = e.response?.data.error;
     const modalId = error ? 'modal-existing-email-error' : 'modal-error';
 
     handleModalRender(modalId);
-    redirect('/login');
+    redirectPath = '/login';
   }
+
+  return redirectPath;
 }
