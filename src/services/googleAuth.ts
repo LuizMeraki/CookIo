@@ -31,10 +31,7 @@ export async function handleGoogleAuth() {
 
     setToken(token);
   } catch (e: any) {
-    const error = e.response?.data.error;
-    const modalId = error ? 'modal-existing-email-error' : 'modal-error';
-
-    handleModalRender(modalId);
+    handleModalRender('modal-error');
     redirectPath = '/login';
   }
 
