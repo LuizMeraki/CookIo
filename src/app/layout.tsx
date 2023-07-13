@@ -1,5 +1,3 @@
-import Script from 'next/script';
-
 import { Baloo_2 } from 'next/font/google';
 
 import Modal from '~/components/Modal';
@@ -31,8 +29,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <RequestErrorTemplate />
         </Modal>
       </body>
-
-      <Script src="https://accounts.google.com/gsi/client" async defer />
     </html>
   );
 }

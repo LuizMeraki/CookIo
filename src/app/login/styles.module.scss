@@ -1,0 +1,68 @@
+.main {
+  padding: 12.5rem 2rem;
+
+  h1:first-of-type {
+    font-size: clamp(3rem, 7vw, 4.8rem);
+    font-weight: 800;
+    text-align: center;
+    line-height: clamp(5rem, 10vw, 5.8rem);
+
+    width: 100%;
+    max-width: 73.8rem;
+    margin: 0 auto 9rem;
+  }
+}
+
+.form {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.inputGroup {
+  margin-bottom: 2rem;
+}
+
+.redirectLinkContainer {
+  margin: 0.8rem 0 2.5rem;
+}
+
+.textOr {
+  display: block;
+  position: relative;
+  margin: 3.2rem 0 2.8rem;
+
+  text-align: center;
+  font-weight: 600;
+  color: var(--gray-200);
+
+  &::before {
+    content: '';
+
+    background-color: var(--gray-200);
+
+    width: 32%;
+    height: 0.1rem;
+
+    position: absolute;
+    left: 9%;
+    top: 50%;
+  }
+
+  &::after {
+    content: '';
+
+    background-color: var(--gray-200);
+
+    width: 32%;
+    height: 0.1rem;
+
+    position: absolute;
+    right: 9%;
+    top: 50%;
+  }
+}
+
+.otherMethodsContainer {
+  display: flex;
+  justify-content: center;
+}
