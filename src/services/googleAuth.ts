@@ -11,7 +11,7 @@ export function redirectUserToGoogleAuth() {
 
   const params = new URLSearchParams({
     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
-    redirect_uri: 'http://localhost:3000/redirect',
+    redirect_uri: 'https://cookio-luizmeraki.vercel.app/redirect',
     response_type: 'token',
     scope: `${scopes.profile} ${scopes.email}`,
   });
