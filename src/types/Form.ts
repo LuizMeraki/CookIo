@@ -29,6 +29,7 @@ export type DispatchType = Dispatch<ReducerActionType>;
 
 export type AuthDataType = {
   name?: string;
+  avatar?: string;
   email: string;
   password: string;
 };
